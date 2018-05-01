@@ -18,7 +18,7 @@ class MarvelItem extends Component {
     componentDidMount() {
         this.mounted = true;
         let url = new URL("http://gateway.marvel.com/v1/public/characters/" + this.state.marvelId)
-        url.search = new URLSearchParams({ apikey: "ADD_YOUR_PRIVATE_KEY" })
+        url.search = new URLSearchParams({ apikey: process.env.REACT_APP_WEATHER_API_KEY })
 
         fetch(url)
             .then(res => res.json())
