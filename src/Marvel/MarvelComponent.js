@@ -3,7 +3,7 @@ import 'bootstrap/dist/css/bootstrap.css';
 import MarvelItem from './MarvelItem'
 import { BrowserRouter as Router, Route, Link, Switch } from 'react-router-dom';
 
-
+const api_key = process.env.REACT_APP_API_MARVEL_KEY
 class MarvelComponent extends Component {
     constructor(props) {
         super(props);
@@ -17,7 +17,7 @@ class MarvelComponent extends Component {
 
         this.mounted = true
         let url = new URL("http://gateway.marvel.com/v1/public/characters")
-        url.search = new URLSearchParams({ apikey: process.env.REACT_APP_WEATHER_API_KEY, limit: 100 })
+        url.search = new URLSearchParams({ apikey: api_key, limit: 100 })
 
         fetch(url)
             .then(res => res.json())
@@ -52,7 +52,7 @@ class MarvelComponent extends Component {
         if (val) {
         
             let url = new URL("http://gateway.marvel.com/v1/public/characters")
-            url.search = new URLSearchParams({ apikey: process.env.REACT_APP_WEATHER_API_KEY, limit: 100, nameStartsWith: val })
+            url.search = new URLSearchParams({ apikey: api_key, limit: 100, nameStartsWith: val })
 
             fetch(url)
                 .then(res => res.json())
